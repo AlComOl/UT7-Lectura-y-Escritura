@@ -26,64 +26,32 @@ public class Prg_7_1 {
 
 	}
 
-	
-//		public static String cuentaPalabras(String nombreFichero){
-//				
-//				FileInputStream f = null;
-//				String cadena = "";
-//				char caracter;
-//				int cont=0;
-//			
-//				try {
-//				f = new FileInputStream(nombreFichero); // abre fichero para leer caracteres byte a byte
-//				int tam = f.available();
-////itero leo las palabras y las meto en la cadena
-//					for (int i = 0; i < tam; i++) {
-////leo f (intancia de )FileInputStream y lo meto en caracter haciendo el casting
-//					caracter = (char) f.read();
-////lo voy añadiendo a cadena
-//					cadena += caracter;
-//					
-//					
-//					
-//						if(caracter==' ' || caracter=='.' || caracter=='\r'){
-//							cont++;
-//						}
-//					}
-//				
-//					System.out.println("Hay "+ cont+" palabras en el fichero");
-//					
-//				}catch (IOException e) {
-//					
-//				e.printStackTrace();
-//				}finally{
-//					
-//				try {
-//				if (f != null) {
-//				f.close();
-//				System.out.println("Fichero leido con exito");
-//				} else
-//				System.out.println("Fichero NO leido");
-//				}catch(IOException e){
-//					e.printStackTrace();
-//				}
-//				}
-//				return cadena;
-//				}
+
 	
 	 public static void cuentaPalabras(String fileName) throws IOException {
 
 	        try {
 	            File file = new File(fileName);
-	            Scanner lector = new Scanner(file);
+	            FileInputStream lector = new FileInputStream(file);
 	            String cadena = "";
 	            int contador = 0;
-
-	            while (lector.hasNext()) {
-	                System.out.println("Palabra: " + lector.next());
-	                contador++;
+	            int size=lector.available();
+	            
+	            for(int i=0;i<size;i++) {
+	            	cadena+=(char)lector.read();
+	            	
+	          
 	            }
+	            for(int i=1;i<cadena.length();i++){
+	            	if(cadena.charAt(i-1)==' '&&cadena.charAt(i)!=' '||cadena.charAt(i)=='\n') {
+	            		contador++;
+	            	}
+	            }
+	            
 	            System.out.println("\nHay un total de: " + contador + " palabras");
+	                
+	            
+	            
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }

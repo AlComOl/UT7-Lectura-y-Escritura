@@ -6,7 +6,7 @@ import java.io.IOException;
 public class EscribirDatosArchivo {
 
 	public static void main(String [] args) {
-		FileOutputStream f = null;
+		
 		String cadena = "En un lugar de la mancha de cuyo nombre no quiero acordarme...";
 		escribirFileOutputStream(cadena, "cadena.dat");
 		}

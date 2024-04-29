@@ -48,7 +48,7 @@ public class Persona {
 			a=sc.nextLine();
 		System.out.println("Introduce el telefono de la persona");
 			t=sc.nextInt();
-		
+		sc.close();
 		Persona p=new Persona(n,a,t);
 		
 		
@@ -60,57 +60,66 @@ public class Persona {
 
 	}
 	
-
-	public static void escribeFichero(Persona p, String fichero)throws IOException {
-		
-		   try {
-	            File file = new File(fichero);
-	            FileOutputStream escritor = new FileOutputStream(file);
-	            
-	           
-	            	String nombre=p.toString();
-	            	
-	            	for(int i=0;i<nombre.length();i++) {
-	            	
-	            		escritor.write((int)nombre.charAt(i));
-	            		
-	            	}
-	            	
-	           System.out.println("El fichero se ha creado y escrito"); 
-	            
-	            
-	            
-	            
-		   } catch (IOException e) {
-	            e.printStackTrace();
-	        }
-		
-		
-	}
-	
-	public static void leeFichero(String fichero)throws IOException {
-		
-		
-		try {
-			 File file = new File(fichero);
-	         FileInputStream lector = new FileInputStream(file);
-	         int size=lector.available();
-	         String cadena1=" ";
-	         
-	         for(int i=0;i<size;i++) {
-	        	cadena1+=(char)lector.read();
-	         }
-	         
-	         System.out.println("Lectura del fichero escrito anteriormente");
-	         
-	         System.out.println(cadena1);
+		/**
+		 * Escribe los datos de una persona en un archivo especificado.
+		 *
+		 * @param p Objeto de tipo {@link Persona} que se va a escribir en el archivo.
+		 * @param fichero Nombre del archivo donde se escribirán los datos de la persona.
+		 * @throws IOException Se lanza si ocurre un error de E/S al escribir en el archivo.
+		 */
+		public static void escribeFichero(Persona p, String fichero)throws IOException {
 			
-		} catch (Exception e) {
+			   try {
+		            File file = new File(fichero);
+		            try (FileOutputStream escritor = new FileOutputStream(file)) {
+						String nombre=p.toString();
+		            	
+		            	for(int i=0;i<nombre.length();i++) {
+		            	
+		            		escritor.write((int)nombre.charAt(i));
+		            		
+		            	}
+					}
+		            
+		           
+		            	System.out.println("El fichero se ha creado y escrito"); 
+		            
+		            
+		            
+		            
+			   } catch (IOException e) {
+		            e.printStackTrace();
+		        }
+			
 			
 		}
-		
+		/**
+		 * Lee los datos de un archivo especificado y los muestra por consola.
+		 *
+		 * @param fichero Nombre del archivo del cual se leerán los datos.
+		 * @throws IOException Se lanza si ocurre un error de E/S al leer el archivo.
+		 */
+		public static void leeFichero(String fichero)throws IOException {
+			
+			
+			try {
+				 File file = new File(fichero);
+		         FileInputStream lector = new FileInputStream(file);
+		         int size=lector.available();
+		         String cadena1=" ";
+		         
+		         for(int i=0;i<size;i++) {
+		        	cadena1+=(char)lector.read();
+		         }
+		         
+		         System.out.println("LAlvaroectura del fichero escrito anteriormente");
+		         
+		         System.out.println(cadena1);
+				
+			} catch (Exception e) {
+				
+				 e.printStackTrace();
+				
+		}	
 	}
-	
-	
-
 }

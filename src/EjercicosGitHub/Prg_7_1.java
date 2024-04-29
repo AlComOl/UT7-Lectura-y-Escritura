@@ -1,6 +1,8 @@
 package EjercicosGitHub;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 /**************************************************************
@@ -33,15 +35,20 @@ public class Prg_7_1 {
 	        try {
 	            File file = new File(fileName);
 	            FileInputStream lector = new FileInputStream(file);
+	            FileReader fr = new FileReader(file);
+	            BufferedReader br = new BufferedReader(fr);
 	            String cadena = "";
 	            int contador = 0;
+	            String linea;
 	            int size=lector.available();
 	            
-	            for(int i=0;i<size;i++) {
-	            	cadena+=(char)lector.read();
-	            	
-	          
-	            }
+	             while ((linea = br.readLine()) != null) {
+	            	for(int i=0;i<size;i++) {
+		            	cadena+=(char)lector.read();
+		            }
+                }
+	            
+	            
 	            for(int i=1;i<cadena.length();i++){
 	            	if(cadena.charAt(i-1)==' '&&cadena.charAt(i)!=' '||cadena.charAt(i)=='\n') {
 	            		contador++;

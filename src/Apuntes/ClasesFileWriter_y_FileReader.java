@@ -22,7 +22,7 @@ public class ClasesFileWriter_y_FileReader {
 		
 	
 		try {
-			File fs = new File("..//nombreFichero");
+			File fs = new File("nombreFichero");
 		FileWriter fw = new FileWriter(fs,true); //true para que añada al fichero amigos
 		/* int i=0;
 		for (String s : amigos) {
@@ -35,7 +35,8 @@ public class ClasesFileWriter_y_FileReader {
 		fw.write(i+ " "+amigos[i]);
 		fw.write("\r\n");
 		}
-		if (fw != null) {fw.close();
+		if (fw != null) {
+			fw.close();
 		System.out.println("Se ha creado");
 		}
 		}catch (IOException e) {

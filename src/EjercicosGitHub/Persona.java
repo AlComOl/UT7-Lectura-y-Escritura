@@ -112,7 +112,7 @@ public class Persona {
 		        	cadena1+=(char)lector.read();
 		         }
 		         
-		         System.out.println("LAlvaroectura del fichero escrito anteriormente");
+		         System.out.println("Lectura del fichero escrito anteriormente");
 		         
 		         System.out.println(cadena1);
 				

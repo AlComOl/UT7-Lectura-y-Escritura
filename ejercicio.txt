@@ -1,1 +1,0 @@
-Persona [nombre=Alvaro , apellidos=Comenge , telefono=454668778]

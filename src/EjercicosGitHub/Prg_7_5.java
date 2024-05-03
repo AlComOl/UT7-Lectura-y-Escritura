@@ -37,11 +37,12 @@ public class Prg_7_5 {
 		
 		System.out.println(media);
 		
+//	Lee el archivo , le resta la media que le pasamos desde la otra funcion, resta y escribe en el otro fichero.	
 		leeRestaMedia("prueba.txt",media);
 	
 		
 		
-//		Restar la media a cada uno de los números de los archivos modificandolos
+
 		
 		
 		
@@ -53,12 +54,13 @@ public class Prg_7_5 {
 		float res;
 		
 		
-		File file=new File(fichero);
+		try {
+			File file=new File(fichero);
 		
-		if(file.exists()) {
 			
 			try {
-				FileReader fr = new FileReader(fichero);
+				
+				FileReader fr = new FileReader(file);
 				File ft=new File("resultante");
 				BufferedReader br = new BufferedReader(fr);
 				FileWriter fw = new FileWriter(ft,true);
@@ -67,12 +69,8 @@ public class Prg_7_5 {
 					n=Character.getNumericValue(caracter);
 					
 					res=n-media;
-					System.out.println(n);
-					System.out.println(media);
-					System.out.println(n-media);
 					
-					
-					fw.write(Float.toString(res)+"\n\r");
+					fw.write(res+"\n\r");
 				}
 				if (fw != null) {
 					fw.close();
@@ -83,11 +81,12 @@ public class Prg_7_5 {
 				// TODO: handle exception
 			}
 			
-			
-			}
+	}catch(Exception e){
 		
-		
-		
+	
+	}
+	
+	
 	}
 	
 	
@@ -113,12 +112,7 @@ public class Prg_7_5 {
 						cont++;
 					}
 				}
-				
-					
-		
-//			 System.out.println(s);
-//			 System.out.println(cont);
-//			System.out.println(res);
+	
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

@@ -108,6 +108,7 @@ public class Entrega290424 {
 		 * @param fichero
 		 */
 		public static void ficheroLee(String fichero)throws IOException {
+				
 	        try {
 	        	//crea objetos de ,File, FileInputStream,DataInputStream a null para ceclarar que no se han iniciado.
 	            File f = null;

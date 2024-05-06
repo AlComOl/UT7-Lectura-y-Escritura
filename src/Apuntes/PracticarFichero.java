@@ -10,7 +10,7 @@ public class PracticarFichero {
 
 	}
 	
-	public static void cuentaAmigos(String fichero) {
+	public static String cuentaAmigos(String fichero) {
 		
 		FileInputStream f = null;
 		String cadena = "";

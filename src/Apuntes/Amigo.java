@@ -29,8 +29,10 @@ import java.io.*;
 				//Escribir cadenas y long en un fichero
 				try {
 				//File f = new File("amigos.obj");
+//					primero se carga las palabras con sin el true en FileOutputStream 
 				FileOutputStream fs = new FileOutputStream("amigos.obj",true);
 //				ObjectOutputStream oos = new ObjectOutputStream(fs);
+//				despues se comenta el ObjectOutputStream y se pone el true en FileOutputStream. Descomentando MiObjectOuputStream
 				MiObjectOuputStream oos = new MiObjectOuputStream(fs);
 				for (int i=0; i<amigos.length; i++) {
 				Amigo a = new Amigo(amigos[i], telefonos[i],direccion[i]);

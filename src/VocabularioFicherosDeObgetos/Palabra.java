@@ -1,5 +1,5 @@
 package VocabularioFicherosDeObgetos;
-
+import java.io.Serializable;
 
 /***************************************************************
  * @autor Álvaro Comenge
@@ -8,7 +8,7 @@ package VocabularioFicherosDeObgetos;
  * @Fecha 20-2-2024
  * 
  * **************************************************************/
-public class Palabra {
+public class Palabra implements Serializable{
 	
 	private String espanol;
 	private String ingles;
@@ -56,22 +56,10 @@ public class Palabra {
 		this.frances = frances;
 	}
 	
+	
 	@Override
-	public String toString() {
-		/******************************************************************
-		 * @autor acome
-		 * @descripcion Se sobrescribe el método toString() para proporcionar
-		 *  una representación de cadena de la instancia de Palabra, mostrando las 
-		 *  traducciones en español, inglés y francés.
-		 * 
-		 * 
-		 * ****************************************************************/
-		StringBuilder idioma = new StringBuilder();//Se crea un instancia de StringBuilder
-		//con idioma.append agregamos a la cadena 
-		idioma.append("\n Traduccion al Espanol : ");idioma.append(espanol);
-		idioma.append("\n Traduccion al Ingles : ");idioma.append(ingles);
-		idioma.append("\n Traduccion al Frances : ");idioma.append(frances);
-		return idioma.toString();//devolvemos la cadena
+    public String toString() {
+        return "Espanyol: " + espanol + ", Ingles: " + ingles + ", Frances: " + frances;
+    }	
+		
 	}
-	 
-}

@@ -12,8 +12,7 @@ package VocabularioFicherosDeObgetos;
  * 
  * *******************************************************/
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+
 import java.io.IOException;
 import java.util.*;
 
@@ -31,13 +30,11 @@ public class TestMainVocabulario {
 	public static void getMenu(){
 		 
 	        System.out.println("Elige una opcion:");
-	        System.out.println("1.Anadir una palabra");//quitar opcion el array se carga directamente con el fichero 
+	        System.out.println("1.Añadir Palabra");
 	        System.out.println("2.Buscar una palabra en otro idioma");
 	        System.out.println("3.Modificar palabra");
 	        System.out.println("4.Eliminar palabra");
-	        System.out.println("5.Cargare el fichero al dicionario");
-	        System.out.println("6.Cargar dicionario al fichero resultado.txt");
-	        System.out.println("7.Mostrar diccionario");
+	        System.out.println("5.Mostrar diccionario");
 	        System.out.println("8.Salir");
 	        
 	 }	 
@@ -52,7 +49,7 @@ public class TestMainVocabulario {
 		Vocabulario v=new Vocabulario();
 		String nfichero="ficheroObjetos.obj";
 		v.crearFicheroObgetos(nfichero);//creamos el archivo 
-		v.cargarDesdeArchivo(nfichero);
+		v.cargarDesdeArchivo(nfichero);//anadir palabras
 		
 //		anadir palabras
 		
@@ -63,7 +60,7 @@ public class TestMainVocabulario {
 		
 			switch (key) {
 			case 1: 
-				v.cargarDiccionario();	
+				v.AnyadirPalabra();	
 				v.llenarFicheroObgetos(nfichero);
 			
 			break;
@@ -94,25 +91,18 @@ public class TestMainVocabulario {
 				v.llenarFicheroObgetos(nfichero);
 				
 			break;
+			
 			case 5:
-//				System.out.println("Introduce nombre el fichero a cargar en el arrayList");
-//				String fichero=sc.next();
-//				v.cargarDesdeArchivo(fichero);
+				System.out.println( v.toString());
 			break;
 			case 6:
-//				v.guardarEnArchivo("resultado.txt");
-			break;
-			case 7:
-			System.out.println(v.toString());
-			break;
-			case 8:
 				System.out.println("Adios");
 			break;
 			default :
 				System.out.println("La opcion no esta contemplada");
 			}
 			
-		}while(key!=7);
+		}while(key!=6);
 		
 		
 		

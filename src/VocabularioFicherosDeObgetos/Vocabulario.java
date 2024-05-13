@@ -73,7 +73,7 @@ public class Vocabulario{
 		    		
 		    	}
 		    
-		    public void cargarDiccionario() {
+		    public void AnyadirPalabra() {
 				/***********************************************************
 				 * @author acome
 				 * 
@@ -95,7 +95,7 @@ public class Vocabulario{
 			    	n=sc.nextInt();
 			    }while(n<0);
 			    sc.nextLine();
-			    
+			   
 			    for(i=1;i<=n;i++) {
 			    	System.out.println("Palabra "+i);
 			    	System.out.println("Palabra en espanol");
@@ -202,29 +202,31 @@ public class Vocabulario{
 		     * @param fichero
 		     */
 		    public void cargarDesdeArchivo(String fichero) {
-		      
-
 		        try {
-		        	// Paso 1: Crear FileInputStream para leer el archivo de objetos
+		            // Paso 1: Crear FileInputStream para leer el archivo de objetos
 		            FileInputStream fileInputStream = new FileInputStream(fichero);
-		         // Paso 2: Crear ObjectInputStream para leer objetos del archivo
+		            // Paso 2: Crear ObjectInputStream para leer objetos del archivo
 		            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-		            Object objeto = null;
-		            while (objeto!=null) {
+		            boolean finArchivo = false;
+		            while (!finArchivo) {
 		                try {
-		                    objeto = objectInputStream.readObject();
-		                    vocabulario.add((Palabra) objeto);
-		                }catch(EOFException e) {
-		                	System.out.println("Eror");
+		                    Palabra objeto = (Palabra) objectInputStream.readObject();
+		                    if (objeto == null) {
+		                        finArchivo = true; // Indicar que se ha alcanzado el final del archivo
+		                    } else {
+		                        vocabulario.add(objeto);
+		                        System.out.println("El archivo se añadió al vocabulario");
+		                    }
+		                } catch (EOFException e) {
+		                    System.out.println("Se ha alcanzado el final del archivo.");
+		                    finArchivo = true; // Indica que se ha alcanzado el final del archivo
 		                }
 		            }
-		                    
-		           }catch (IOException | ClassNotFoundException e) {
-		                    System.out.println("Error al leer el archivo: " + e.getMessage());
-		           }
-		            
-		            
+		            objectInputStream.close(); // Es importante cerrar el ObjectInputStream después de su uso, sino se queda bloqueado
+		        } catch (IOException | ClassNotFoundException e) {
+		            System.out.println("Error al leer el archivo: " + e.getMessage());
 		        }
+		    }
 		    /*********************************************
 		     * 
 		     * cargar archivo de obgetos
@@ -233,16 +235,39 @@ public class Vocabulario{
 		     * 
 		     ***********************************************/
 		    public void llenarFicheroObgetos(String fichero) throws SecurityException, IOException {
-		    	FileOutputStream fo=new FileOutputStream(fichero,true);//acceder
-		    	MiObjectOutputStream mObject=new MiObjectOutputStream(fo);//escribir
+		    	FileOutputStream fo=null;
+		    	MiObjectOutputStream mObject=null;
+		    	
+		    try {
+		    	 fo=new FileOutputStream(fichero);//acceder
+		    	 mObject=new MiObjectOutputStream(fo);//escribir
 		    	
 		    	for(Palabra p:vocabulario){
 		    		
-		    		mObject.writeObject(p);
+		    		mObject.writeObject(p);	
 		    	
 		    	}
+		    	mObject.flush();
+		    }catch(IOException e) {
+		    	
+		    	System.out.println("Error al escribir el archivo :"+e.getMessage());
+		    } finally {
+		    	if (mObject != null) {
+		            try {
+		                mObject.close();
+		            } catch (IOException e) {
+		                System.out.println("Error al cerrar el MiObjectOutputStream: " + e.getMessage());
+		            }
+		        }
+		        if (fo != null) {
+		            try {
+		                fo.close();
+		            } catch (IOException e) {
+		                System.out.println("Error al cerrar el FileOutputStream: " + e.getMessage());
+		            }
+		        }
 		    }
-		    
+		}
 		    /**
 		     * @throws IOException ************************************
 		     * 
@@ -253,6 +278,7 @@ public class Vocabulario{
 		   public void crearFicheroObgetos(String nfichero) throws IOException {//crear fichero cargado
 			   File f=new File(nfichero);//crea Fichero
 			   FileOutputStream fos=new FileOutputStream(f);//hace de tuberia canaliza info
+			   
 			   ObjectOutputStream os= new ObjectOutputStream(fos);//poder manejar el objeto en el fichero con las funciones
 			   
 			   Palabra p = new Palabra("casa","house","maison");
@@ -291,25 +317,14 @@ public class Vocabulario{
 		        }
 		    }
 		    
-		    
-		    
-		    /*
-		     * 
-		     * Muestra las palabras del vocabulario 
-		     */
-		    public String toString() {
-			    StringBuilder sb = new StringBuilder("Vocabulario:  \n");
+
+			@Override
+			public String toString() {
+			    StringBuilder sb = new StringBuilder("Vocabulario: \n");
 			    for (Palabra palabra : vocabulario) {
-			        sb.append(palabra.getEspanol()).append(" - ")
-			          .append(palabra.getIngles()).append(" - ")
-			          .append(palabra.getFrances()).append("\n ");
-			    }
-			    // Eliminar la última coma y espacio si hay palabras en el vocabulario
-			    if (!vocabulario.isEmpty()) {
-			        sb.setLength(sb.length() - 2);
+			        sb.append(palabra.toString()).append("\n");
 			    }
 			    return sb.toString();
 			}
-			 
-		    }
+		}
 

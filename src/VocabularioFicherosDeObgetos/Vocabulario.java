@@ -1,9 +1,5 @@
-package VocabularioFicherosDeTexto;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+package VocabularioFicherosDeObgetos;
+import java.io.*;
 /*Esta clase es necesaria para manejar listas de elementos 
 * y para leer la entrada del usuario desde la consola.*/
 import java.util.ArrayList;
@@ -112,6 +108,7 @@ public class Vocabulario{
 			    	Palabra instancia =new Palabra(espanol,ingles,frances);
 				    //por medio de add la instancia en el arraylist<palabra>
 				    vocabulario.add(instancia);
+				    
 			    }
 			}
 //		    buscar la palabra que quiero modificar el idioma buscada y modifica todos
@@ -205,36 +202,64 @@ public class Vocabulario{
 		     * @param fichero
 		     */
 		    public void cargarDesdeArchivo(String fichero) {
-		        BufferedReader br = null; // Declaramos el BufferedReader fuera del try
+		      
 
 		        try {
-		            br = new BufferedReader(new FileReader(fichero)); // Inicializamos el BufferedReader
-		            String linea;
-		            while ((linea = br.readLine()) != null) {
-		                String[] partes = linea.split(" ");
-		                if (partes.length == 3) {
-		                    String espanol = partes[0];
-		                    String ingles = partes[1];
-		                    String frances = partes[2];
-		                    Palabra palabra = new Palabra(espanol, ingles, frances);
-		                    vocabulario.add(palabra);
-		                }
-		            }
-		            System.out.println("¡Diccionario cargado desde el archivo correctamente!");
-		        } catch (IOException e) {
-		            System.out.println("Error al leer el archivo: " + e.getMessage());
-		        } finally {
-		            // Cerramos el BufferedReader en el bloque finally para asegurarnos de que se cierre
-		            // independientemente de si ocurre una excepción o no
-		            if (br != null) {
+		        	// Paso 1: Crear FileInputStream para leer el archivo de objetos
+		            FileInputStream fileInputStream = new FileInputStream(fichero);
+		         // Paso 2: Crear ObjectInputStream para leer objetos del archivo
+		            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+		            Object objeto = null;
+		            while (objeto!=null) {
 		                try {
-		                    br.close();
-		                } catch (IOException e) {
-		                    System.out.println("Error al cerrar el BufferedReader: " + e.getMessage());
+		                    objeto = objectInputStream.readObject();
+		                    vocabulario.add((Palabra) objeto);
+		                }catch(EOFException e) {
+		                	System.out.println("Eror");
 		                }
 		            }
+		                    
+		           }catch (IOException | ClassNotFoundException e) {
+		                    System.out.println("Error al leer el archivo: " + e.getMessage());
+		           }
+		            
+		            
 		        }
+		    /*********************************************
+		     * 
+		     * cargar archivo de obgetos
+		     * @throws IOException 
+		     * @throws SecurityException 
+		     * 
+		     ***********************************************/
+		    public void llenarFicheroObgetos(String fichero) throws SecurityException, IOException {
+		    	FileOutputStream fo=new FileOutputStream(fichero,true);//acceder
+		    	MiObjectOutputStream mObject=new MiObjectOutputStream(fo);//escribir
+		    	
+		    	for(Palabra p:vocabulario){
+		    		
+		    		mObject.writeObject(p);
+		    	
+		    	}
 		    }
+		    
+		    /**
+		     * @throws IOException ************************************
+		     * 
+		     * 
+		     * 
+		     * 
+		     *************************************/
+		   public void crearFicheroObgetos(String nfichero) throws IOException {//crear fichero cargado
+			   File f=new File(nfichero);//crea Fichero
+			   FileOutputStream fos=new FileOutputStream(f);//hace de tuberia canaliza info
+			   ObjectOutputStream os= new ObjectOutputStream(fos);//poder manejar el objeto en el fichero con las funciones
+			   
+			   Palabra p = new Palabra("casa","house","maison");
+			   
+			   os.writeObject(p);
+			   
+		   }
 		    
 		    /****
 		     * Esta funcion escribee el contenido del arraylist de tipo palabras Vocabulario 

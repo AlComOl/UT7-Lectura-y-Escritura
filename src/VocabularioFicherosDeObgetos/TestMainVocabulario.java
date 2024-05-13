@@ -1,4 +1,4 @@
-package VocabularioFicherosDeTexto;
+package VocabularioFicherosDeObgetos;
 /*********************************************************
  * @author Álvaro Comenge
  * 
@@ -20,7 +20,7 @@ import java.util.*;
 
 
 public class TestMainVocabulario {
-	static Vocabulario v = new Vocabulario(); // Creamos una instancia de la clase Vocabulario
+
 
 	
 	/***********************************************
@@ -31,7 +31,7 @@ public class TestMainVocabulario {
 	public static void getMenu(){
 		 
 	        System.out.println("Elige una opcion:");
-	        System.out.println("1.Anadir una palabra");
+	        System.out.println("1.Anadir una palabra");//quitar opcion el array se carga directamente con el fichero 
 	        System.out.println("2.Buscar una palabra en otro idioma");
 	        System.out.println("3.Modificar palabra");
 	        System.out.println("4.Eliminar palabra");
@@ -42,12 +42,19 @@ public class TestMainVocabulario {
 	        
 	 }	 
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
+		 
+		
+		
 		Scanner sc=new Scanner(System.in);
 		int key;
 		
 		Vocabulario v=new Vocabulario();
+		String nfichero="ficheroObjetos.obj";
+		v.crearFicheroObgetos(nfichero);//creamos el archivo 
+		v.cargarDesdeArchivo(nfichero);
 		
+//		anadir palabras
 		
 		do {
 		 getMenu();
@@ -57,6 +64,7 @@ public class TestMainVocabulario {
 			switch (key) {
 			case 1: 
 				v.cargarDiccionario();	
+				v.llenarFicheroObgetos(nfichero);
 			
 			break;
 			case 2: 
@@ -75,6 +83,7 @@ public class TestMainVocabulario {
 				String pamodificar=sc.next();
 				
 				v.modificarElemento(palabra,pamodificar);
+				v.llenarFicheroObgetos(nfichero);
 				
 			break;
 			case 4:
@@ -82,15 +91,16 @@ public class TestMainVocabulario {
 				String eliminar=sc.next();
 				
 				v.eliminarPalabra(eliminar);
+				v.llenarFicheroObgetos(nfichero);
 				
 			break;
 			case 5:
-				System.out.println("Introduce nombre el fichero a cargar en el arrayList");
-				String fichero=sc.next();
-				v.cargarDesdeArchivo(fichero);
+//				System.out.println("Introduce nombre el fichero a cargar en el arrayList");
+//				String fichero=sc.next();
+//				v.cargarDesdeArchivo(fichero);
 			break;
 			case 6:
-				v.guardarEnArchivo("resultado.txt");
+//				v.guardarEnArchivo("resultado.txt");
 			break;
 			case 7:
 			System.out.println(v.toString());

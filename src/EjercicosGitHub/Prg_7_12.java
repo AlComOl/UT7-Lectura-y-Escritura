@@ -1,4 +1,23 @@
 package EjercicosGitHub;
+/***
+ * @autor Alvaro Comenge 
+ * 
+ * @fecha 15/05/24
+ * 
+ * @descripcion
+ * Una empresa guarda en un fichero secuencial, VENTAS, las ventas efectuadas por sus empleados. 
+ * Está ordenado por CODIGO y cada vendedor tendrá tantos registros como ventas haya realizado.
+ * MES contendrá el número de mes en el que se ha realizado la venta. DIA indicará el día del mes en que
+ * se efectuó. R-VENTAS CODIGO IMPORTE MES DIA Se desea visualizar:  el total vendido por cada vendedor, 
+ * Total vendido, vendedor XXXXX: 99999999 ... Total vendido, vendedor XXXXX: 99999999 
+ *  los totales vendidos por día y el total de mes, TOTALES POR DÍAS MES: XXXXXXXXXX 
+ * DIA TOTAL DIA 1 99999999 ... ... 31 99999999 TOTAL MES: 9999999999 
+ * los totales vendidos y la venta media en cada uno de los meses, especificando el nombre del mes,
+ * así como el total de ventas y la venta media(de las medias). 
+ * TOTALVENTA MEDIA ENERO 99999999 999999 FEBRERO 99999999 999999 ... DICIEMBRE 99999999 999999 
+ * TOTAL VENTAS: 9999999999
+ * 
+ */
 
 import java.io.BufferedReader;
 import java.io.File;

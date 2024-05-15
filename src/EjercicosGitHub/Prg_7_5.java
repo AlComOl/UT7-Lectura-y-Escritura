@@ -162,6 +162,95 @@ public class Prg_7_5 {
 	}	
 
 	
-	
+//  public static void fusionarFicheros() {
+//  Scanner sc = new Scanner(System.in);
+//  System.out.print("Introduce el nombre del primer fichero: ");
+//  String nombreFichero1 = sc.nextLine();
+//  System.out.print("Introduce el nombre del segundo fichero: ");
+//  String nombreFichero2 = sc.nextLine();
+//  System.out.print("Introduce el nombre del fichero de fusión: ");
+//  String nombreFicheroFusion = sc.nextLine();
+//
+//  FileInputStream fis1 = null;
+//  ObjectInputStream ois1 = null;
+//  FileInputStream fis2 = null;
+//  ObjectInputStream ois2 = null;
+//  FileOutputStream fos = null;
+//  ObjectOutputStream oos = null;
+//
+//  try {
+//      fis1 = new FileInputStream(nombreFichero1);
+//      ois1 = new ObjectInputStream(fis1);
+//      fis2 = new FileInputStream(nombreFichero2);
+//      ois2 = new ObjectInputStream(fis2);
+//      fos = new FileOutputStream(nombreFicheroFusion);
+//      oos = new ObjectOutputStream(fos);
+//
+//      int num1, num2;
+//      boolean eof1 = false;
+//      boolean eof2 = false;
+//
+//      if (!eof1) {
+//          try {
+//              num1 = ois1.readInt();
+//          } catch (EOFException e) {
+//              eof1 = true;
+//              num1 = Integer.MAX_VALUE;
+//          }
+//      } else {
+//          num1 = Integer.MAX_VALUE;
+//      }
+//
+//      if (!eof2) {
+//          try {
+//              num2 = ois2.readInt();
+//          } catch (EOFException e) {
+//              eof2 = true;
+//              num2 = Integer.MAX_VALUE;
+//          }
+//      } else {
+//          num2 = Integer.MAX_VALUE;
+//      }
+//
+//      while (!eof1 || !eof2) {
+//          if (num1 < num2) {
+//              oos.writeInt(num1);
+//              if (!eof1) {
+//                  try {
+//                      num1 = ois1.readInt();
+//                  } catch (EOFException e) {
+//                      eof1 = true;
+//                      num1 = Integer.MAX_VALUE;
+//                  }
+//              }
+//          } else {
+//              oos.writeInt(num2);
+//              if (!eof2) {
+//                  try {
+//                      num2 = ois2.readInt();
+//                  } catch (EOFException e) {
+//                      eof2 = true;
+//                      num2 = Integer.MAX_VALUE;
+//                  }
+//              }
+//          }
+//      }
+//
+//      System.out.println("Ficheros fusionados y ordenados correctamente.");
+//  } catch (IOException e) {
+//      System.out.println("Error al fusionar los ficheros: " + e.getMessage());
+//  } finally {
+//      try {
+//          if (ois1 != null) ois1.close();
+//          if (fis1 != null) fis1.close();
+//          if (ois2 != null) ois2.close();
+//          if (fis2 != null) fis2.close();
+//          if (oos != null) oos.close();
+//          if (fos != null) fos.close();
+//      } catch (IOException e) {
+//          e.printStackTrace();
+//      }
+//  }
+//}
 
 }

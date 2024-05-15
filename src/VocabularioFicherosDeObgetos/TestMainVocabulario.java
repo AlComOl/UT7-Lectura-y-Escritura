@@ -2,11 +2,11 @@ package VocabularioFicherosDeObgetos;
 /*********************************************************
  * @author Álvaro Comenge
  * 
- * @fecha 21/01/24
+ * @fecha 15/05/24
  * 
  * @descripcion main del vocabulario menu para aceder a las 
- * opciones de 1-cargar menu 2-traducir palabra 3-modificar
- * 4-eliminar 5-cargarfichero 6-
+ * opciones de 1-Añadir Palabra menu 2-Buscar palabra en otro idioma 3-modificar
+ * 4-eliminar 5-Mostrar diccionario 6-salir
  * 
  * 
  * 

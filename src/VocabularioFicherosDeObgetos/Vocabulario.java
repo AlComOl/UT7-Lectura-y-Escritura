@@ -9,9 +9,10 @@ import java.util.Scanner;
  * @descripcion Esta clase contiene métodos para buscar traducciones de palabras en diferentes idiomas
     y para cargar palabras en el diccionario, además de modificar palabra y eliminar palabra
     cuando se eleimina una palabra se eliminara en todos los idiomas
- * @version ArrayList
+    
+ * @version version fichero Objetos
  * 
- * @Fecha 20-2-2024
+ * @Fecha 14-5-2024
  * 
  *  
  * 

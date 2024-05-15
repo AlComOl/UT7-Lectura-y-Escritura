@@ -1,4 +1,13 @@
 package VocabularioFicherosDeObgetos;
+/************************************************
+ * @autor Álvaro Comenge Oliver
+ * 
+ * @descripcion Esta clase es para que se graben 
+ * mas objetos en el fichero de objetos, de manera que solo se haga un cabecera
+ * en el archivo.
+ * 
+ * 
+ * ******************************************/
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;

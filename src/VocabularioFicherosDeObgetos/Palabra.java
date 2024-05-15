@@ -5,7 +5,7 @@ import java.io.Serializable;
  * @autor Álvaro Comenge
  * @descripcion Ejerccio Vocabulario
  * @version ArrayList
- * @Fecha 20-2-2024
+ * @Fecha 14-5-2024
  * 
  * **************************************************************/
 public class Palabra implements Serializable{

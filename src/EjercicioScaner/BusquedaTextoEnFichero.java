@@ -16,9 +16,12 @@ public class BusquedaTextoEnFichero {
         System.out.print("Ingrese el texto a buscar: ");
         String textoBuscado = sc.nextLine();
 
-        BufferedReader reader = null;
+        FileReader fileReader = null;
+        BufferedReader bufferedReader = null;
+
         try {
-            reader = new BufferedReader(new FileReader(nombreArchivo));
+            fileReader = new FileReader(nombreArchivo);
+            bufferedReader = new BufferedReader(fileReader);
             String linea;
             int numeroLinea = 1;
             boolean encontrado = false;
@@ -26,7 +29,7 @@ public class BusquedaTextoEnFichero {
             System.out.println("Archivo: " + nombreArchivo);
             System.out.println("Texto a buscar: " + textoBuscado);
 
-            while ((linea = reader.readLine()) != null) {
+            while ((linea = bufferedReader.readLine()) != null) {
                 if (linea.contains(textoBuscado)) {
                     encontrado = true;
                     System.out.println("Linea " + numeroLinea + ": " + linea);
@@ -40,12 +43,15 @@ public class BusquedaTextoEnFichero {
         } catch (IOException e) {
             System.err.println("Error al leer el archivo: " + e.getMessage());
         } finally {
-            if (reader != null) {
-                try {
-                    reader.close();
-                } catch (IOException e) {
-                    System.err.println("Error al cerrar el lector: " + e.getMessage());
+            try {
+                if (bufferedReader != null) {
+                    bufferedReader.close();
                 }
+                if (fileReader != null) {
+                    fileReader.close();
+                }
+            } catch (IOException e) {
+                System.err.println("Error al cerrar el lector: " + e.getMessage());
             }
         }
     }

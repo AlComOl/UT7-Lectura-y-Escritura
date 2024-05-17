@@ -64,7 +64,7 @@ public class Prg_7_3 {
                         bw.newLine();
                     }
                     bw.close();
-                    System.out.println("Los números han sido ordenados y guardados en 'numeros_ordenados.txt'.");
+                    System.out.println("Numeros han sido ordenados y guardados en 'numeros_ordenados.txt'.");
 
                 } catch (Exception e) {
                     e.printStackTrace();

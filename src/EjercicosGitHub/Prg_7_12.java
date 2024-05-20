@@ -36,18 +36,18 @@ public class Prg_7_12 {
     public static void crearArchivoVentas(String nombreArchivo) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter(nombreArchivo));
         String[] datosVentas = {
-            "1, 100, 1, 5",
-            "2, 150, 1, 8",
-            "1, 200, 1, 12",
-            "2, 120, 2, 3",
-            "1, 180, 2, 7",
-            "3, 220, 2, 10",
-            "3, 130, 3, 2",
-            "2, 190, 3, 5",
-            "1, 170, 3, 9",
-            "2, 140, 4, 1",
-            "1, 210, 4, 4",
-            "3, 160, 4, 6"
+        		"1; 100; 1; 5",
+        		"2; 150; 1; 8",
+        		"1; 200; 1; 12",
+        		"2; 120; 2; 3",
+        		"1; 180; 2; 7",
+        		"3; 220; 2; 10",
+        		"3; 130; 3; 2",
+        		"2; 190; 3; 5",
+        		"1; 170; 3; 9",
+        		"2; 140; 4; 1",
+        		"1; 210; 4; 4",
+        		"3; 160; 4; 6"
         };
 
         for (String venta : datosVentas) {
@@ -78,7 +78,7 @@ public class Prg_7_12 {
         // Leemos cada línea del archivo
         while ((linea = br.readLine()) != null) {
             // Dividimos la línea en partes separadas por ", "
-            String[] partes = linea.split(", ");
+            String[] partes = linea.split("; ");
             // Iteramos sobre cada parte
             for (String parte : partes) {
                 ventas[index++] = Double.parseDouble(parte); // Convertimos y almacenamos cada parte como un double en el arreglo

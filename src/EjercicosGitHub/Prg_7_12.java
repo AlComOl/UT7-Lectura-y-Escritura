@@ -70,7 +70,7 @@ public class Prg_7_12 {
         }
         br.close(); // Cerramos el lector de archivos
 
-        // Creamos un arreglo para almacenar las ventas, multiplicando por 4 para tener en cuenta los cuatro valores por venta
+        // Creamos un array para almacenar las ventas, multiplicando por 4 para tener en cuenta los cuatro valores por venta
         double[] ventas = new double[numVentas * 4];
         br = new BufferedReader(new FileReader(nombreArchivo)); // Abrimos nuevamente el lector de archivos
         int index = 0; // Índice para almacenar las ventas en el arreglo
@@ -90,12 +90,12 @@ public class Prg_7_12 {
 
     public static void mostrarTotalPorVendedor(double[] ventas) {
         // Map para almacenar el total vendido por cada vendedor
-        Map<Double, Double> totalPorVendedor = new HashMap<>();
+        Map<Integer, Double> totalPorVendedor = new HashMap<>();
 
         // Iterar sobre las ventas
         for (int i = 0; i < ventas.length; i += 4) {
             // Obtener el código del vendedor y el importe de la venta
-            double codigoVendedor = ventas[i];
+            int codigoVendedor =(int) ventas[i];
             double importe = ventas[i + 1];
 
             // Verificar si el vendedor ya está en el mapa

@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"Practica17524","l":"ExcepcionColeccion"},{"p":"Practica17524","l":"MiObjectOutputStream"},{"p":"Practica17524","l":"Receta"},{"p":"Practica17524","l":"TestMain"}];updateSearchResults();

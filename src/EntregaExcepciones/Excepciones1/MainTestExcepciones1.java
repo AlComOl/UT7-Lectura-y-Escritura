@@ -1,4 +1,4 @@
-package Excepciones1;
+package EntregaExcepciones.Excepciones1;
 
 import java.io.IOException;
 

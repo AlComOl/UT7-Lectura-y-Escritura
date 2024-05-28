@@ -12,9 +12,9 @@ public class ClasesFileWriter_y_FileReader {
 		String [] amigos= {"Jose","Pepe","Andres"};
 		
 	
-	escribirFileWriter(amigos,"cadan.dat");
+	escribirFileWriter(amigos,"cadan.txt");
 	
-	leerFileReader("cadan.dat");
+	leerFileReader("cadan.txt");
 	
 	}
 	public static void escribirFileWriter(String[] amigos, String nombreFichero){
@@ -22,7 +22,7 @@ public class ClasesFileWriter_y_FileReader {
 		
 	
 		try {
-			File fs = new File("nombreFichero");
+			File fs = new File("cadan.txt");
 		FileWriter fw = new FileWriter(fs,true); //true para que añada al fichero amigos
 		/* int i=0;
 		for (String s : amigos) {

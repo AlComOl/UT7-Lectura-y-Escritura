@@ -1,4 +1,4 @@
-package Practica17524;
+package Practica17524_SegundaEntrega;
 
 import java.io.Serializable;
 

@@ -10,12 +10,12 @@ import java.util.*;
  * 
  * @descripcion 
  * En el club de baloncesto BAHEETO'S BASKET CLUB se está realizando una campaña de captación de jugadores altos.
- *  Se dispone de un fichero con datos de aspirantes, llamado ALTOS. DAT, que se describe a continuación ALTOS. DAT 
- *  Aspirantes a jugadores del club Campo Descripción Tipo nom Nombre del aspirante string alt Altura del aspirante (en metros) 
- *  float pro Provincia de nacimiento string  El fichero almacena un máximo de 500 registros.  La provincia se almacena en mayúsculas.
- *    El fichero no está ordenado. Construya un programa que realice las siguientes operaciones: 
- *    Solicitar por teclado una provincia y almacenar los nombres y las alturas de los aspirantes nacidos en la provincia indicada.
- *     Calcular la altura media de todos los aspirantes de dicha provincia.  Emitir un informe impreso con los nombres y alturas de los aspirantes de la provincia cuya altura supere la media. El formato del listado debe ser el siguiente: Provincia: xxxxxxxxxxxxxxxxxxxxxxxxx Altura Media: x.xx Nombre Altura xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx x.xx ... 50 líneas de detalle por página
+ * Se dispone de un fichero con datos de aspirantes, llamado ALTOS. DAT, que se describe a continuación ALTOS. DAT 
+ * Aspirantes a jugadores del club Campo Descripción Tipo nom Nombre del aspirante string alt Altura del aspirante (en metros) 
+ * float pro Provincia de nacimiento string  El fichero almacena un máximo de 500 registros.  La provincia se almacena en mayúsculas.
+ *  El fichero no está ordenado. Construya un programa que realice las siguientes operaciones: 
+ *  Solicitar por teclado una provincia y almacenar los nombres y las alturas de los aspirantes nacidos en la provincia indicada.
+ *  Calcular la altura media de todos los aspirantes de dicha provincia.  Emitir un informe impreso con los nombres y alturas de los aspirantes de la provincia cuya altura supere la media. El formato del listado debe ser el siguiente: Provincia: xxxxxxxxxxxxxxxxxxxxxxxxx Altura Media: x.xx Nombre Altura xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx x.xx ... 50 líneas de detalle por página
  *************************************************/
 
 public class Prg_7_12Bis {
@@ -32,7 +32,6 @@ public class Prg_7_12Bis {
 		try {
 			
 			fmedia=leerArchivoMedia(nfichero,provincia);
-//			System.out.println(fmedia);
 			
 			leeRegistro(nfichero,fmedia,provincia);
 		
@@ -41,7 +40,15 @@ public class Prg_7_12Bis {
 		}
 	}
 
-	
+	/*******************************************
+	 * @author acome
+	 * @descripcion saca media y de los judadores de la misma provincia
+	 * 
+	 * @param nfichero
+	 * @param provincia
+	 * @return media
+	 * @throws Exception
+	 ********************************************/
 	public static float leerArchivoMedia(String nfichero,String provincia)throws Exception {
 		String columnas[] =new String [4];
 		
@@ -89,11 +96,17 @@ public class Prg_7_12Bis {
 	        return media;
 	    }
 
-	
-	
-	public static void leeRegistro(String nfichero,float media,String provincia) {
+	/*******************************************************
+	 * @author acome
+	 * @descripcion esta funcion si el jugador es de la provincia
+	 * y la altura es mayor que la media de altura saca los jugadores y altura
+	 * @param nfichero
+	 * @param media
+	 * @param provincia
+	 * @throws Exception
+	 ***************************************************************/
+	public static void leeRegistro(String nfichero,float media,String provincia)throws Exception {
 		float afloat;
-	
 		String columnas[] =new String [4];
 		String linea=null;
 		File file= new File(nfichero);
@@ -104,7 +117,7 @@ public class Prg_7_12Bis {
 	         
 	         System.out.printf("Provincia: %s%nAltura Media: %.2f%n", provincia, media);
 	         System.out.println("****************");
-	            System.out.printf("%-40s %s%n", "JUGADOR", "ALTURA");
+	         System.out.println("JUGADOR		ALTURA");
 	         
 	         while((linea=br.readLine())!=null) {
 	        	 
@@ -113,7 +126,7 @@ public class Prg_7_12Bis {
 	        	 
 	        	 if (columnas[2].equalsIgnoreCase(provincia) && (afloat = Float.parseFloat(columnas[1])) > media) {
 	        		    
-	        		 System.out.println(columnas[0]+ "              "+columnas[1] );
+	        		 System.out.println(columnas[0]+ "         "+columnas[1] );
 	        		}
 
 	         }
